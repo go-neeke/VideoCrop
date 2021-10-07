@@ -119,43 +119,47 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/lighter_gray"
-            app:layout_constraintBottom_toTopOf="@id/ivAspectRatio"
+            app:layout_constraintBottom_toTopOf="@id/bottomLayout"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/ivAspectRatio"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:background="?selectableItemBackground"
-            android:padding="12dp"
+        <LinearLayout
+            android:id="@+id/bottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivPlay"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_crop" />
+            android:background="@color/main_color">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/ivPlay"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="?selectableItemBackground"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivDone"
-            app:layout_constraintStart_toEndOf="@id/ivAspectRatio"
-            app:layout_constraintTop_toTopOf="@id/ivAspectRatio"
-            app:srcCompat="@drawable/ic_play" />
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivAspectRatio"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="0.3"
+                android:background="?selectableItemBackground"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_crop" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/ivDone"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="?selectableItemBackground"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivPlay"
-            app:layout_constraintTop_toTopOf="@id/ivAspectRatio"
-            app:srcCompat="@drawable/ic_check" />
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="0.3"
+                android:background="?selectableItemBackground"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_play" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/ivDone"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_weight="0.3"
+                android:background="?selectableItemBackground"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_check" />
+        </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
     <include
