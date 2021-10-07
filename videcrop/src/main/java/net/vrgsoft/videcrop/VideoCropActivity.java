@@ -367,7 +367,7 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
 
                 @Override
                 public void onFailure(String message) {
-                    Toast.makeText(VideoCropActivity.this, "Failed to crop!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VideoCropActivity.this, message, Toast.LENGTH_SHORT).show();
                     Log.e("onFailure", message);
                 }
 
