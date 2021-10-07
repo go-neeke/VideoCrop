@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toTopOf="@id/cropVideoView"
         tools:text="75%" />
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clBottomMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -119,48 +119,44 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/lighter_gray"
-            app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+            app:layout_constraintBottom_toTopOf="@id/ivAspectRatio"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/bottomLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAspectRatio"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="?selectableItemBackground"
+            android:padding="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivPlay"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@color/main_color">
+            app:srcCompat="@drawable/ic_crop" />
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/ivAspectRatio"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="0.3"
-                android:background="?selectableItemBackground"
-                android:padding="12dp"
-                app:srcCompat="@drawable/ic_crop" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?selectableItemBackground"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivDone"
+            app:layout_constraintStart_toEndOf="@id/ivAspectRatio"
+            app:layout_constraintTop_toTopOf="@id/ivAspectRatio"
+            app:srcCompat="@drawable/ic_play" />
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/ivPlay"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="0.3"
-                android:background="?selectableItemBackground"
-                android:padding="12dp"
-                app:srcCompat="@drawable/ic_play" />
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/ivDone"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_weight="0.3"
-                android:background="?selectableItemBackground"
-                android:padding="12dp"
-                app:srcCompat="@drawable/ic_check" />
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?selectableItemBackground"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivPlay"
+            app:layout_constraintTop_toTopOf="@id/ivAspectRatio"
+            app:srcCompat="@drawable/ic_check" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/aspectMenu"
@@ -170,4 +166,4 @@
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
