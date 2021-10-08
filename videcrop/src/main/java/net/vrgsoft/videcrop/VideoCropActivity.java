@@ -167,6 +167,7 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
 
         mTmbProgress.setSliceBlocked(false);
         mTmbProgress.removeVideoStatusThumb();
+//        mTvProgress.setText(String.valueOf(currentPosition));
 
 //        mTmbProgress.setPosition(currentPosition);
 //        mTmbProgress.setBufferedPosition(bufferedPosition);

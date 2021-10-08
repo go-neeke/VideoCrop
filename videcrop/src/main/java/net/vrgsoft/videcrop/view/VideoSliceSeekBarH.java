@@ -90,8 +90,8 @@ public class VideoSliceSeekBarH extends AppCompatImageView {
         this.scl = scl;
     }
 
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
         this.paint.setColor(this.progressColor);
         canvas.drawRect(new Rect(this.thumbPadding, this.progressTop, this.thumbSliceLeftX, this.progressBottom), this.paint);
         canvas.drawRect(new Rect(this.thumbSliceRightX, this.progressTop, getWidth() - this.thumbPadding, this.progressBottom), this.paint);
