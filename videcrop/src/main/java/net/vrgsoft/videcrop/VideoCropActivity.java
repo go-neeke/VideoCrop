@@ -91,6 +91,8 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
 
         inputPath = getIntent().getStringExtra(VIDEO_CROP_INPUT_PATH);
 
+        Log.d("A.lee", "inputPath=" + inputPath);
+
         String currentMilliSecond = String.valueOf(System.currentTimeMillis());
         outputPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getString(R.string.app_name) + "/video_crop/" + currentMilliSecond + ".mp4";
 
