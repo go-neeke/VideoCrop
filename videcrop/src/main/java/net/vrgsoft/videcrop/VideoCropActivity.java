@@ -77,7 +77,6 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
     public static Intent createIntent(Context context, String inputPath, String outputPath) {
         Intent intent = new Intent(context, VideoCropActivity.class);
         intent.putExtra(VIDEO_CROP_INPUT_PATH, inputPath);
-        intent.putExtra(VIDEO_CROP_OUTPUT_PATH, outputPath);
         return intent;
     }
 
@@ -90,9 +89,9 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
         formatter = new Formatter(formatBuilder, Locale.getDefault());
 
         inputPath = getIntent().getStringExtra(VIDEO_CROP_INPUT_PATH);
-        outputPath = getIntent().getStringExtra(VIDEO_CROP_OUTPUT_PATH);
+        outputPath = getExternalCacheDir().getAbsolutePath() + "temp_video_crop.mp4";
 
-        if (TextUtils.isEmpty(inputPath) || TextUtils.isEmpty(outputPath)) {
+        if (TextUtils.isEmpty(inputPath)) {
             Toast.makeText(this, "input and output paths must be valid and not null", Toast.LENGTH_SHORT).show();
             setResult(RESULT_CANCELED);
             finish();
@@ -355,7 +354,9 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
             mFFTask = mFFMpeg.execute(cmd, new ExecuteBinaryResponseHandler() {
                 @Override
                 public void onSuccess(String message) {
-                    setResult(RESULT_OK);
+                    Intent result = new Intent();
+                    result.putExtra(VIDEO_CROP_OUTPUT_PATH, outputPath);
+                    setResult(RESULT_OK, result);
                     Log.e("onSuccess", message);
                     finish();
                 }
