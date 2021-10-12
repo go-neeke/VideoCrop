@@ -18,6 +18,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -89,7 +90,9 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
         formatter = new Formatter(formatBuilder, Locale.getDefault());
 
         inputPath = getIntent().getStringExtra(VIDEO_CROP_INPUT_PATH);
-        outputPath = getExternalCacheDir().getAbsolutePath() + "temp_video_crop.mp4";
+
+        String currentMilliSecond = String.valueOf(System.currentTimeMillis());
+        outputPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getString(R.string.app_name) + "/video_crop/" + currentMilliSecond + ".mp4";
 
         if (TextUtils.isEmpty(inputPath)) {
             Toast.makeText(this, "input and output paths must be valid and not null", Toast.LENGTH_SHORT).show();
