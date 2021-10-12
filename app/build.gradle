@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     defaultConfig {
         applicationId "net.vrgsoft.videocrop"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -22,4 +22,5 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.3.1"
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation project(":videcrop")
+    implementation 'com.arthenica:mobile-ffmpeg-full:4.2.2.LTS'
 }

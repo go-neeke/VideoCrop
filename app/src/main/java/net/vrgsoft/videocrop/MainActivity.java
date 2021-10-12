@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        /storage/self/primary/DCIM/Camera/20180201_155445.mp4
 
-        String inputPath = "/storage/self/primary/DCIM/test1.mp4";
+        String inputPath = "/storage/0000-0000/DCIM/Camera/20200604_100106.mp4";
         String outputPath = "/storage/emulated/0/YDXJ08599.mp4";
         startActivityForResult(VideoCropActivity.createIntent(this, inputPath, outputPath), CROP_REQUEST);
     }

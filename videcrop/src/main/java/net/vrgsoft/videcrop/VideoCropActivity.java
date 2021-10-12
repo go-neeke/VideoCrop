@@ -91,10 +91,12 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
 
         inputPath = getIntent().getStringExtra(VIDEO_CROP_INPUT_PATH);
 
+        File file = new File(inputPath);
+        String filename = file.getName();
+
         Log.d("A.lee", "inputPath=" + inputPath);
 
-        String currentMilliSecond = String.valueOf(System.currentTimeMillis());
-        outputPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getString(R.string.app_name) + "/video_crop/" + currentMilliSecond + ".mp4";
+        outputPath = file.getParent() + "/crop_" + filename;
 
         if (TextUtils.isEmpty(inputPath)) {
             Toast.makeText(this, "input and output paths must be valid and not null", Toast.LENGTH_SHORT).show();
@@ -302,7 +304,10 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
         int videoHeight = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
         int rotationDegrees = Integer.valueOf(retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION));
 
+
+        Log.d("A.lee", "videoWidth, videoHeight" + videoWidth + ",videoHeight" + videoHeight);
         mCropVideoView.initBounds(videoWidth, videoHeight, rotationDegrees);
+        mCropVideoView.setFixedAspectRatio(false);
     }
 
     private void handleMenuVisibility() {
@@ -322,9 +327,10 @@ public class VideoCropActivity extends AppCompatActivity implements VideoPlayer.
 
     private void requestStoragePermission() {
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_REQUEST);
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_REQUEST);
         } else {
             initPlayer(inputPath);
         }
